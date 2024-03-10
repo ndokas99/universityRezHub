@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Off Residency Agency</title>
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link href="../static/css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <!--nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Off Residency Agency</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav-->
+    <div id="title" class="bg-dark">
+        <p class="text-white">Off Residency Agency</p>
+    </div>
+    <div id="cont-1" class="container mt-3">
+      <div class="row">
+        <div class="col-12">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+              <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="uni-img d-block w-100" src="../static/images/{{ university.img }}" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="uni-img d-block w-100" src="../static/images/1920x500.gif" alt="Second slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Item 2 Heading</h5>
+                  <p>Item 2 Description</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="uni-img d-block w-100" src="../static/images/1920x500.gif" alt="Third slide">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Item 3 Heading</h5>
+                  <p>Item 3 Description</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h2 class="text-center">{{ university.name }}</h2>
+    <hr>
+    <div id="cont-2" class="container">
+      {% for group in residence %}
+      <div class="row text-center mt-4">
+        {% for hostel in group %}
+        <div class="col-md-4 pb-1 pb-md-0">
+          <div class="card">
+            <img class="card-img-top" src="../static/images/400X200.gif" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ hostel.name }}</h5>
+              <p class="card-text">{{ hostel.address }}</p>
+              <p class="card-text">{{ hostel.contact }}</p>
+              <a href="#" data-target="#myModal" data-toggle="modal" onclick="view({{ residence.index(group) }}, {{ group.index(hostel) }});" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    <hr>
+    <div class="container text-white bg-dark p-4">
+      <div class="row">
+        <div class="col-md-4 col-lg-5 col-6">
+          <address>
+            <strong>{{ university.name }}</strong><br>
+            {{ university.location.split(",")[0] }}<br>
+            {{ university.location.split(",")[1] }}<br>
+            {{ university.location.split(",")[2] }}<br>
+            <abbr title="Phone">P:</abbr> {{ university.phone }}<br>
+            <abbr title="Email">E:</abbr> <a href="mailto:{{ university.email }}">{{ university.email }}</a>
+          </address>
+        </div>
+        <div class="col-md-4 col-lg-5 col-6">
+          <address>
+            <strong>MyStoreFront, Inc.</strong><br>
+            Indian Treasure Link<br>
+            Quitman, WA, 99110-0219<br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+          <address>
+            <strong>Full Name</strong><br>
+            <a href="mailto:#">first.last@example.com</a>
+          </address>
+        </div>
+      </div>
+    </div>
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © MyWebsite. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 id="title" class="modal-title"></h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.26314489305!2d31.05354625009297!3d-17.82629508088334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e0aa1aad7b%3A0x3a00507b0403abec!2s117%20Union%20Ave%2C%20Harare!5e0!3m2!1sen!2szw!4v1596586832150!5m2!1sen!2szw" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../static/js/jquery-3.4.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap-4.4.1.js"></script>
+    <script>
+        function resize(){
+            $(".card-img-top")[0].css('height',$('.card-img-top')[0].height+'px');
+        }
+        function view(a, b){
+            $('#myModal #title')
+        }
+        $(window).ready(function(){
+            resize();
+        })
+    </script>
+  </body>
+</html>
